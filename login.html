@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Login | Controle Financeiro</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="tela-login">
+  <main class="login-container">
+    <!-- LOGIN -->
+    <section class="login-form">
+      <h2>SEJA BEM-VINDO(A)</h2>
+      <button class="google-btn">Fazer login com o Google</button>
+      <p>OU</p>
+
+      <input type="text" id="emailLogin" placeholder="E-mail ou nome de usuário" />
+      <input type="password" id="senhaLogin" placeholder="Senha" />
+
+      <a href="#" id="linkEsqueciSenha">Esqueceu sua senha? Clique aqui.</a>
+      <button class="entrar" id="btnEntrar">Entrar</button>
+    </section>
+
+    <!-- CADASTRO -->
+  <section class="cadastro-form">
+    <h2>CADASTRE-SE AQUI</h2>
+    <input type="text" id="nomeCadastro" placeholder="Nome de usuário" />
+    <input type="email" id="emailCadastro" placeholder="E-mail" />
+    <input type="text" id="usuarioCadastro" placeholder="Usuário" />
+    <input type="date" id="nascimentoCadastro" placeholder="Data de nascimento" />
+    <input type="password" id="senhaCadastro" placeholder="Senha" />
+    <button class="cadastrar" id="btnCadastrar">Cadastrar-se</button>
+  </section>
+  </main>
+
+  <!-- Script Firebase + Lógica de Login -->
+  <script type="module" src="login.js"></script>
+</body>
+</html>

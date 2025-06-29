@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel Financeiro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="pagina-painel">
+
+  <main class="painel-container">
+    <button class="btn-voltar" onclick="location.href='dashboard.html'">← Voltar</button>
+    <h2>Painel Financeiro</h2>
+
+    <!-- ENTRADAS -->
+    <section class="painel-bloco">
+      <h3>Entradas</h3>
+      <table>
+        <thead>
+          <tr><th>Data</th><th>Descrição</th><th>Valor</th></tr>
+        </thead>
+        <tbody id="listaEntradas">
+          <!-- Entradas vão aqui -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- GASTOS -->
+    <section class="painel-bloco">
+      <h3>Gastos</h3>
+      <table>
+        <thead>
+          <tr><th>Data</th><th>Descrição</th><th>Valor</th></tr>
+        </thead>
+        <tbody id="listaGastos">
+          <!-- Gastos vão aqui -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- RESERVA -->
+    <section class="painel-bloco">
+      <h3>Reserva Financeira</h3>
+      <table>
+        <thead>
+          <tr><th>Descrição</th><th>Valor</th></tr>
+        </thead>
+        <tbody id="listaReserva">
+          <!-- Reservas vão aqui -->
+        </tbody>
+      </table>
+    </section>
+
+    <!-- BALANÇO -->
+        <section class="painel-bloco">
+        <h3>Balanço Mensal</h3>
+        <label for="filtroMes">Selecionar mês:</label>
+        <select id="filtroMes"></select>
+        <table>
+            <tbody>
+            <tr><td>Entradas</td><td id="valorEntradas">R$ 0,00</td></tr>
+            <tr><td>Saídas</td><td id="valorGastos">R$ 0,00</td></tr>
+            <tr><td><strong>Saldo</strong></td><td id="saldoFinal"><strong>R$ 0,00</strong></td></tr>
+            </tbody>
+        </table>
+        </section>
+
+
+    <!-- GRÁFICO -->
+    <section class="painel-bloco">
+      <h3>Distribuição Gráfica</h3>
+      <canvas id="graficoResumo" width="300" height="300"></canvas>
+    </section>
+  </main>
+
+  <script type="module" src="painel.js"></script>
+</body>
+</html>

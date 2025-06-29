@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Controle Financeiro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="cabecalho">
+    <h1>Controle Financeiro</h1>
+    <nav class="menu-dashboard">
+      <button onclick="location.href='dashboard.html'">Dashboard</button>
+      <div class="usuario-menu" id="menuUsuario" style="display:none;">
+        <button class="usuario-nome" id="btnUsuario"></button>
+        <div class="usuario-dropdown" id="dropdownMenu">
+          <button onclick="location.href='alterar-dados.html'">Alterar Dados</button>
+          <button id="btnLogout">Sair da Conta</button>
+        </div>
+      </div>
+      <button id="btnEntrar" style="display:none;" onclick="location.href='login.html'">Entrar</button>
+    </nav>
+  </header>
+
+<main class="cards-container">
+  <a class="card" href="organizacao.html">
+    <div class="circulo">
+      <img src="img/organizacao.png" alt="Organização" />
+    </div>
+    <h2>Tenha Mais Organização</h2>
+    <p class="subtitulo">Mantenha suas finanças em ordem de forma simples e intuitiva. Saiba exatamente para onde seu dinheiro está indo e planeje seus próximos passos com clareza.</p>
+  </a>
+
+  <a class="card" href="objetivos.html">
+    <div class="circulo">
+      <img src="img/objetivos.png" alt="Objetivos" />
+    </div>
+    <h2>Conquiste Seus Objetivos</h2>
+    <p class="subtitulo">De economizar para uma viagem a alcançar a tão sonhada independência, nossa ferramenta te ajuda a visualizar e alcançar suas metas, um gasto de cada vez.</p>
+  </a>
+
+  <a class="card" href="decisoes.html">
+    <div class="circulo">
+      <img src="img/decisoes.png" alt="Decisões Inteligentes" />
+    </div>
+    <h2>Tome Decisões Inteligentes</h2>
+    <p class="subtitulo">Com uma visão clara de suas receitas e despesas, você terá o poder de fazer escolhas financeiras mais conscientes, evitando surpresas e otimizando seus recursos.</p>
+  </a>
+</main>
+  <script type="module">
+    import { auth } from './firebase-config.js';
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const menuUsuario = document.getElementById("menuUsuario");
+    const btnUsuario = document.getElementById("btnUsuario");
+    const btnEntrar = document.getElementById("btnEntrar");
+    const dropdown = document.getElementById("dropdownMenu");
+    const btnLogout = document.getElementById("btnLogout");
+
+    onAuthStateChanged(auth, user => {
+      if (user) {
+        menuUsuario.style.display = "inline-block";
+        btnEntrar.style.display = "none";
+        btnUsuario.textContent = user.displayName ? `Olá, ${user.displayName}` : `Olá, ${user.email.split("@")[0]}`;
+      } else {
+        menuUsuario.style.display = "none";
+        btnEntrar.style.display = "inline-block";
+      }
+    });
+
+    if (btnUsuario && dropdown) {
+      btnUsuario.addEventListener("click", () => {
+        dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+      });
+      document.addEventListener("click", (e) => {
+        if (!btnUsuario.contains(e.target) && !dropdown.contains(e.target)) {
+          dropdown.style.display = "none";
+        }
+      });
+    }
+
+    if (btnLogout) {
+      btnLogout.addEventListener("click", async () => {
+        await signOut(auth);
+        window.location.href = "login.html";
+      });
+    }
+  </script>
+</body>
+</html>

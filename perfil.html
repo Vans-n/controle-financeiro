@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Perfil</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="pagina-perfil">
+  <main class="perfil-container">
+    <h2>Editar Perfil</h2>
+
+        <div class="form-perfil">
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" placeholder="Digite seu nome completo" />
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" placeholder="Digite seu e-mail" />
+
+        <label for="usuario">Nome de Usuário:</label>
+        <input type="text" id="usuario" placeholder="Digite seu nome de usuário" />
+
+        <label for="nascimento">Data de Nascimento:</label>
+        <input type="date" id="nascimento" />
+
+        <label for="novaSenha">Nova Senha:</label>
+        <input type="password" id="novaSenha" placeholder="Deixe em branco se não quiser trocar" />
+
+        <button id="btnSalvarPerfil" class="btn-salvar">Salvar Alterações</button>
+        <button class="btn-voltar" onclick="location.href='dashboard.html'">← Voltar</button>
+        </div>
+
+  </main>
+
+  <script type="module" src="perfil.js"></script>
+</body>
+</html>

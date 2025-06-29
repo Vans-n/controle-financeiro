@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Cadastro de Renda</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="pagina-renda">
+  <main class="renda-container">
+    <div class="card-renda">
+      <h2>Cadastro de Renda</h2>
+      <p>Informe sua renda mensal</p>
+
+      <div class="campo-renda">
+        <label for="renda">R$:</label>
+        <input type="number" id="renda" placeholder="0,00" />
+      </div>
+      
+
+      <div class="campo-descricao">
+        <label for="descricao">Tipo:</label>
+        <input type="text" id="descricao" placeholder="Escreva sua descrição" />
+      </div>
+
+      <button class="btn-salvar" id="btnSalvarRenda">SALVAR</button>
+    </div>
+
+    <button class="btn-voltar" onclick="location.href='dashboard.html'">←</button>
+  </main>
+
+  <script type="module" src="renda.js"></script>
+</body>
+</html>

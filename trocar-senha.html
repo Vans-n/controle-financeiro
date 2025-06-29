@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alterar Senha</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="pagina-perfil">
+  <main class="perfil-container">
+    <h2>Alterar Senha</h2>
+
+    <div class="form-perfil">
+      <label for="senhaAtual">Senha Atual:</label>
+      <input type="password" id="senhaAtual" placeholder="Digite sua senha atual" />
+
+      <label for="novaSenha">Nova Senha:</label>
+      <input type="password" id="novaSenha" placeholder="Nova senha (mín. 6 caracteres)" />
+
+      <label for="confirmarSenha">Confirmar Nova Senha:</label>
+      <input type="password" id="confirmarSenha" placeholder="Confirme a nova senha" />
+
+      <button id="btnTrocarSenha" class="btn-salvar">Alterar Senha</button>
+      <button class="btn-voltar" onclick="location.href='dashboard.html'">← Voltar</button>
+    </div>
+  </main>
+
+  <script type="module" src="trocar-senha.js"></script>
+</body>
+</html>

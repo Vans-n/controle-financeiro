@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Reserva Financeira</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="pagina-reserva">
+  <main class="reserva-container">
+    <div class="card-reserva">
+      <h2>Reserva Financeira</h2>
+      <p>Informe sua reserva</p>
+
+      <div class="campo-reserva">
+        <label for="reserva">R$:</label>
+        <input type="number" id="reserva" placeholder="0,00" />
+      </div>
+
+      <button class="btn-salvar" id="btnSalvarReserva">SALVAR</button>
+    </div>
+
+    <button class="btn-voltar" onclick="location.href='dashboard.html'">←</button>
+  </main>
+
+  <script type="module" src="reserva.js"></script>
+</body>
+</html>

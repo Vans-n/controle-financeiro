@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cadastro de Gastos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="pagina-gastos">
+  <main class="gastos-container">
+    <div class="card-gastos">
+      <h2>Gastos</h2>
+      <p>Informe seus gastos mensais</p>
+
+      <div class="campo-gastos">
+        <label for="gastos">R$:</label>
+        <input type="number" id="gastos" placeholder="0,00" />
+      </div>
+
+      <div class="campo-descricao">
+        <label for="descricao">Tipo:</label>
+        <input type="text" id="descricao" placeholder="Escreva sua descrição" />
+      </div>
+
+      <button class="btn-salvar" id="btnSalvarGastos">SALVAR</button>
+    </div>
+
+    <button class="btn-voltar" onclick="location.href='dashboard.html'">←</button>
+  </main>
+
+  <script type="module" src="gastos.js"></script>
+</body>
+</html>

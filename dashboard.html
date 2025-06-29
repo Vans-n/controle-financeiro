@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="pagina-dashboard">
+  <header class="cabecalho">
+    <nav class="menu-dashboard">
+      <button onclick="location.href='index.html'">Início</button>
+      <button onclick="location.href='painel.html'">Painel</button>
+    </nav>
+    <div class="usuario-menu" id="menuUsuario">
+      <button class="usuario-nome" id="btnUsuario">Usuário</button>
+      <div class="usuario-dropdown" id="dropdownMenu">
+        <button onclick="location.href='perfil.html'">Alterar Dados</button>
+        <button id="btnLogout">Sair da Conta</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-container">
+    <section class="mensagem">
+      <h2>Assuma o Controle:<br>Sua Vida Financeira em Suas Mãos</h2>
+    </section>
+
+    <section class="menu-opcoes">
+      <h2>Vamos começar?</h2>
+      <button onclick="location.href='renda.html'">Renda</button>
+      <button onclick="location.href='gastos.html'">Gastos</button>
+      <button onclick="location.href='reserva.html'">Reserva Financeira</button>
+    </section>
+  </main>
+
+  <script type="module" src="usuario-menu.js"></script>
+
+  <script type="module">
+    import { auth, db } from './firebase-config.js';
+    import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const nome = user.displayName || user.email.split("@")[0];
+        document.getElementById("btnUsuario").textContent = `Olá, ${nome} ▼`;
+
+        const ref = doc(db, "usuarios", user.uid);
+        const snap = await getDoc(ref);
+
+        if (snap.exists()) {
+          const dados = snap.data();
+          const renda = dados.renda || 0;
+          const gastos = dados.gastos || 0;
+          const reserva = dados.reserva || 0;
+          const saldo = renda - gastos;
+
+          document.getElementById("valorRenda").textContent = renda.toFixed(2);
+          document.getElementById("valorGastos").textContent = gastos.toFixed(2);
+          document.getElementById("valorReserva").textContent = reserva.toFixed(2);
+
+          const elSaldo = document.getElementById("valorDisponivel");
+          elSaldo.textContent = saldo.toFixed(2);
+          elSaldo.style.color = saldo < 0 ? "crimson" : "var(--verde4)";
+        }
+      } else {
+        window.location.href = "login.html";
+      }
+    });
+  </script>
+</body>
+</html>
